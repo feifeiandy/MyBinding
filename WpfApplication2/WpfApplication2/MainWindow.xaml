@@ -1,6 +1,7 @@
 ﻿<Window x:Class="WpfApplication2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loacl="clr-namespace:MVVM;assembly=MVVM"
         Title="MainWindow" Height="350" Width="525"> 
     <StackPanel>
 
@@ -14,13 +15,22 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Height="150">
+        <StackPanel Height="120"  x:Name="st">
+            <StackPanel.DataContext>
+                <loacl:Student ID="4" Name="ces"></loacl:Student>
+            </StackPanel.DataContext>
+            <TextBox Name="txtID" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Name="txtName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             
-            <TextBox Name="txtID"></TextBox>
-            <TextBox Name="txtName"></TextBox>
+            
             <Button Click="Button_Click">增加</Button>
             <Button Click="Button_Click_1">删除</Button>
             <Button Click="Button_Click_2"> 修改</Button>
+
+           
+        </StackPanel>
+        <StackPanel Height="50">
+            <Button   Command="{Binding Mcomd}" CommandParameter="{Binding ElementName=st, Path=DataContext}">增加xx</Button>
         </StackPanel>
     </StackPanel>
 </Window>

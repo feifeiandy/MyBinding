@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,9 @@ namespace WpfApplication2
 
             vvm = new ViewModel();
             this.ls.ItemsSource = vvm.stus;
+            this.DataContext = vvm;
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
