@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +14,24 @@ namespace MVVM
         private Action<int> _executeint;
         public bool CanExecute(object parameter)
         {
+            if (parameter is Student)
+            {
+                if ((parameter as Student).ID==0||(parameter as Student).Name=="")
+                {
+                    return false;
+                }
+                return true;
+            }
+            else if (parameter is string)
+            {
+                return true;
+            }
             return true;
         }
 
         public event EventHandler CanExecuteChanged;
+        
+        
 
         public void Execute(object parameter)
         {
@@ -41,4 +56,6 @@ namespace MVVM
             this._executeint = execute;
         }
     }
+
+
 }

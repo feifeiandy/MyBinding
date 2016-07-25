@@ -29,11 +29,15 @@
             <Button   Command="{Binding Mcomd}" CommandParameter="{Binding ElementName=st, Path=DataContext}">增加（不在同一个命令组中）</Button>
 
         </StackPanel>
-        <StackPanel Height="100" x:Name="stcmd">
+        <StackPanel Height="150" x:Name="stcmd">
+            <StackPanel.CommandBindings>
+                <CommandBinding Command="New"/>
+            </StackPanel.CommandBindings>
             <Button   Command="{Binding Mcomd}" CommandParameter="{Binding ElementName=st, Path=DataContext}">增加 Student</Button>
             <Button   Command="{Binding Mcomd2}" CommandParameter="{Binding ElementName=st, Path=DataContext}">删除 Student</Button>
             <Button   Command="{Binding Mcomd4}" CommandParameter="{Binding ElementName=txtID, Path=Text}">删除 ID</Button>
             <Button   Command="{Binding Mcomd3}" CommandParameter="{Binding ElementName=st, Path=DataContext}">修改 Student</Button>
+            <Button   Command="New" CommandParameter="{Binding ElementName=st, Path=DataContext}">Add</Button>
         </StackPanel>
     </StackPanel>
 </Window>
