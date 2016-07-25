@@ -28,24 +28,38 @@ namespace WpfApplication2
 
             vvm = new ViewModel();
             this.ls.ItemsSource = vvm.stus;
-            this.DataContext = vvm;
+            
+
+            //此处调用多个MVVM的时候将其区分，好处是将命令分类
+            this.stcmd.DataContext = vvm;
 
 
         }
 
+        #region 传统事件
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.vvm.Add(Convert.ToInt32(this.txtID.Text), this.txtName.Text);
+            Student stu = new Student();
+            stu.ID = Convert.ToInt32(this.txtID.Text);
+            stu.Name = this.txtName.Text;
+            this.vvm.add(stu);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.vvm.dele(Convert.ToInt32(this.txtID.Text));
+            Student stu = new Student();
+            stu.ID = Convert.ToInt32(this.txtID.Text);
+            stu.Name = this.txtName.Text;
+            this.vvm.delete(stu);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.vvm.update(Convert.ToInt32(this.txtID.Text), this.txtName.Text);
-        }
+            Student stu = new Student();
+            stu.ID = Convert.ToInt32(this.txtID.Text);
+            stu.Name = this.txtName.Text;
+            this.vvm.update(stu);
+        } 
+        #endregion
     }
 }
