@@ -22,17 +22,13 @@ namespace WpfApplication2
             this.stus = new ObservableCollection<Student>() { 
             new Student(){ ID=1, Name="张三"},
             new Student(){ ID=2, Name="李四"}
-            
             };
-
             this.Mcomd = new MyCommad(add);
             this.Mcomd2 = new MyCommad(delete);
             this.Mcomd4 = new MyCommad(deleteint);
             this.Mcomd3 = new MyCommad(update);
         }
-
         #region 属于DAL层的增，删，改 
- 
         //如果一下的方法给传统事件调用为public ,如果只给命令调用则为private
         public void add(Student stu)
         {
@@ -56,12 +52,10 @@ namespace WpfApplication2
             //this.stus.Remove(stutemp);
             this.stus.Remove(stutemp);
         }
-
         public void deleteint(int id)
         {
             this.stus.RemoveAt(id - 1);
         }
-
         public void update(Student stu)
         {
             this.stus.First(x => x.ID == stu.ID).Name = stu.Name;
