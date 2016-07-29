@@ -4,7 +4,6 @@
         xmlns:loacl="clr-namespace:MVVM;assembly=MVVM"
         Title="MainWindow" Height="350" Width="525"> 
     <StackPanel>
-
         <ListBox x:Name="ls" Height="100">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -21,13 +20,10 @@
             </StackPanel.DataContext>
             <TextBox Name="txtID" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBox Name="txtName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            
-            
             <Button Click="Button_Click">增加</Button>
             <Button Click="Button_Click_1">删除</Button>
             <Button Click="Button_Click_2"> 修改</Button>
             <Button   Command="{Binding Mcomd}" CommandParameter="{Binding ElementName=st, Path=DataContext}">增加（不在同一个命令组中）</Button>
-
         </StackPanel>
         <StackPanel Height="150" x:Name="stcmd">
             <StackPanel.CommandBindings>
